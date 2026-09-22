@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "@idds/styles/tailwind/css/idds.css";
+@import "@idds/styles/tailwind/css/panrb.css";
+
+.hover-animation-up {
+    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-animation-up:hover {
+    transform: translateY(-3px);
+}
