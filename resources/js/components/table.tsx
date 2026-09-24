@@ -1,220 +1,87 @@
-import { useState } from "react";
-import {
-    IconTrash,
-    IconEdit,
-    IconSearch,
-    IconBan,
-    IconClockCheck,
-} from "@tabler/icons-react";
-import { Button, type Column, Table, TextField } from "@idds/react";
+import { type Column, Table } from "@idds/react";
 
-// Helper masking nama
-const maskName = (name: string | null) => {
-    if (!name) return "-";
-    const firstName = name.split(" ")[0];
-    return `${firstName} •••••••••`;
-};
+interface TableComponentProps {
+    data: any[];
+    searchTerm: string;
+    columns: Column[];
+}
 
-// Helper masking email
-const maskEmail = (email: string | null) => {
-    if (!email) return "-";
-    const [local, domain] = email.split("@");
-    const count = Math.min(Math.max(local.length, 5), 8);
-    return `${"•".repeat(count)}@${domain}`;
-};
-
-const columns: Column[] = [
-    {
-        header: "Nama",
-        accessor: "name",
-        render: (row: any) => maskName(row.name),
-    },
-    {
-        header: "Email",
-        accessor: "email",
-        render: (row: any) => maskEmail(row.email),
-    },
-    {
-        header: "PERURI ID",
-        accessor: "peruri_id",
-        render: (row: any) => row.peruri_id ?? "-",
-    },
-    {
-        header: "Status Akun",
-        accessor: "status",
-        render: (row: any) => {
-            if (row.status === true) {
-                return (
-                    <span className="inline-flex items-center gap-2 text-emerald-500 font-medium">
-                        <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
-                        Aktif
-                    </span>
-                );
-            } else if (row.status === false) {
-                return (
-                    <span className="inline-flex items-center gap-2 text-slate-500 font-medium">
-                        <IconBan
-                            size={18}
-                            className="text-slate-500 shrink-0"
-                        />
-                        Tidak Aktif
-                    </span>
-                );
-            }
-            return <span>-</span>;
-        },
-    },
-    {
-        header: "",
-        accessor: "actions",
-        render: (row: any) => {
-            if (!row.id) return null;
-            return (
-                <div className="flex items-center justify-end gap-3 text-slate-700">
-                    <button
-                        type="button"
-                        className="hover:text-slate-900 transition-colors"
-                        onClick={() => handleToggleStatus(row)}
-                        title={row.status ? "Nonaktifkan" : "Aktifkan"}
-                    >
-                        {row.status ? (
-                            <IconBan size={18} />
-                        ) : (
-                            <IconClockCheck size={18} />
-                        )}
-                    </button>
-
-                    <button
-                        type="button"
-                        className="hover:text-slate-900 transition-colors"
-                        onClick={() => handleEdit(row)}
-                        title="Edit"
-                    >
-                        <IconEdit size={18} />
-                    </button>
-
-                    <button
-                        type="button"
-                        className="hover:text-slate-900 transition-colors"
-                        onClick={() => handleDelete(row)}
-                        title="Hapus"
-                    >
-                        <IconTrash size={18} />
-                    </button>
-                </div>
-            );
-        },
-    },
-];
-
-const handleToggleStatus = (row: any) => {
-    console.log("Toggle Status:", row);
-};
-
-const handleEdit = (row: any) => {
-    console.log("Edit:", row);
-};
-
-const handleDelete = (row: any) => {
-    console.log("Delete:", row);
-};
-
-const data = [
-    {
-        id: 1,
-        name: "Alfonso",
-        email: "alfonso@hotmail.com",
-        peruri_id: "D2019290YU",
-        status: true,
-    },
-    {
-        id: 2,
-        name: "Lydia",
-        email: "lydia@hotmail.com",
-        peruri_id: "D2019290YU",
-        status: true,
-    },
-    {
-        id: 3,
-        name: "Marcus",
-        email: "marcus@yahoo.com",
-        peruri_id: "D2019290YU",
-        status: true,
-    },
-    {
-        id: 4,
-        name: "Roger",
-        email: "roger@yahoo.com",
-        peruri_id: "D2019290YU",
-        status: true,
-    },
-    {
-        id: 5,
-        name: "Marcus",
-        email: "marcus@aol.com",
-        peruri_id: "D2019290YU",
-        status: false,
-    },
-];
-
-export default function TableExamples() {
-    const [searchTerm, setSearchTerm] = useState("");
-
+export default function TableComponent({
+    data,
+    searchTerm,
+    columns,
+}: TableComponentProps) {
+    // --- FETCH DATA DENGAN SORTING & FILTERING ---
     const fetchData = async (params: any) => {
-        let resultData = data;
+        const page = params?.page || 1;
+        const pageSize = params?.pageSize || 5;
+        const sortField = params?.sortField || params?.sortBy;
+        const sortOrder = params?.sortOrder || params?.sortDirection;
 
+        let resultData = [...data];
+
+        // 1. Pencarian (Filtering)
         if (searchTerm) {
             const searchLower = searchTerm.toLowerCase();
-            resultData = resultData.filter(
-                (item) =>
-                    item.name.toLowerCase().includes(searchLower) ||
-                    item.email?.toLowerCase().includes(searchLower) ||
-                    item.peruri_id?.toLowerCase().includes(searchLower),
+            resultData = resultData.filter((item) =>
+                Object.values(item).some(
+                    (val) =>
+                        val && String(val).toLowerCase().includes(searchLower),
+                ),
             );
         }
 
+        // 2. Pengurutan (Sorting)
+        if (sortField && sortOrder) {
+            resultData.sort((a, b) => {
+                const aVal = a[sortField];
+                const bVal = b[sortField];
+
+                if (aVal === null || aVal === undefined) return 1;
+                if (bVal === null || bVal === undefined) return -1;
+
+                let comparison = 0;
+                if (typeof aVal === "string" && typeof bVal === "string") {
+                    comparison = aVal.localeCompare(bVal);
+                } else if (aVal > bVal) {
+                    comparison = 1;
+                } else if (aVal < bVal) {
+                    comparison = -1;
+                }
+
+                return sortOrder === "desc" || sortOrder === "DESC"
+                    ? -comparison
+                    : comparison;
+            });
+        }
+
+        // 3. Pemotongan Halaman (Pagination)
+        const totalFiltered = resultData.length;
+        const startIndex = (page - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        const paginatedData = resultData.slice(startIndex, endIndex);
+
         return {
-            data: resultData,
-            total: resultData.length,
+            data: paginatedData,
+            total: totalFiltered,
         };
     };
 
     return (
-        <div className="flex flex-col h-full w-full gap-4">
-            <div>
-                <TextField
-                    value={searchTerm}
-                    onChange={setSearchTerm}
-                    placeholder="Search..."
-                    prefixIcon={<IconSearch size={16} />}
-                />
-            </div>
-
-            {/* Container luar dengan tambahan class "custom-table-wrapper" */}
-            <div className="custom-table-wrapper border border-slate-200 rounded-xl p-4 bg-white shadow-sm overflow-hidden">
-                {/* CSS standar React untuk override border IDDS secara spesifik */}
-                <style>{`
-                    .custom-table-wrapper table thead,
-                    .custom-table-wrapper table thead tr,
-                    .custom-table-wrapper table th {
-                        border-top: none !important;
-                        border-top-width: 0px !important;
-                    }
-                    .custom-table-wrapper > div {
-                        border-top: none !important;
-                    }
-                `}</style>
-
-                <Table
-                    rowClickable={false}
-                    columns={columns}
-                    fetchData={fetchData}
-                    initialSortField={null}
-                    initialSortOrder={null}
-                    rowKey="id"
-                    showPagination={false}
-                />
-            </div>
+        <div className="custom-table-wrapper border border-slate-200 rounded-xl p-4 bg-white shadow-sm overflow-hidden w-full">
+            <Table
+                key={searchTerm} // Reset halaman ke-1 otomatis saat kata kunci berubah
+                rowClickable={false}
+                columns={columns}
+                fetchData={fetchData}
+                initialSortField="kode"
+                initialSortOrder="asc"
+                rowKey="id"
+                showPagination={true}
+                initialPage={1}
+                initialPageSize={5}
+                pageSizeOptions={[5, 10, 20]}
+            />
         </div>
     );
 }

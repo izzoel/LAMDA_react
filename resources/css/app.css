@@ -9,3 +9,23 @@
 .hover-animation-up:hover {
     transform: translateY(-3px);
 }
+
+/* #Tabel */
+.custom-table-wrapper table thead,
+.custom-table-wrapper table thead tr,
+.custom-table-wrapper table th {
+    border-top: none !important;
+    border-top-width: 0px !important;
+}
+.custom-table-wrapper > div {
+    border-top: none !important;
+}
+.custom-table-wrapper table tbody tr .action-buttons {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+}
+.custom-table-wrapper table tbody tr:hover .action-buttons {
+    opacity: 1;
+    visibility: visible;
+}
