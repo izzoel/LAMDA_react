@@ -1,12 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
     TextField,
     CardPlain,
     Button,
     SelectDropdown,
-    Modal,
     TextArea,
-    SingleFileUpload,
     type SelectOption,
 } from "@idds/react";
 import {
@@ -31,7 +29,7 @@ import {
     getStatusBadgeColor,
     getLabColorClass,
     type SopItem,
-} from "./sop-data";
+} from "./data";
 import TableComponent from "@/components/table";
 
 export default function SopPage() {
@@ -41,6 +39,7 @@ export default function SopPage() {
     const [selectedKategoriFilter, setSelectedKategoriFilter] = useState<any[]>(
         [],
     );
+    const [isMobile, setIsMobile] = useState(false);
 
     // State Modals
     const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
@@ -80,6 +79,17 @@ export default function SopPage() {
         ],
         [],
     );
+
+    // Listener Ukuran Layar Mobile / Responsive
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 640);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     // Statistik Ringkasan
     const stats = useMemo(() => {
@@ -185,7 +195,7 @@ export default function SopPage() {
     return (
         <div className="space-y-6 pb-12">
             {/* Header Title */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-4">
                 <div>
                     <h1 className="text-xl md:text-2xl font-semibold text-content-primary">
                         SOP Laboratorium
@@ -194,17 +204,6 @@ export default function SopPage() {
                         Standar Operasional Prosedur Penggunaan Alat dan Pedoman
                         Operasional 17 Laboratorium
                     </p>
-                </div>
-                <div className="flex items-center gap-3">
-                    <Button
-                        hierarchy="primary"
-                        size="md"
-                        onClick={() => setIsUploadModalOpen(true)}
-                        className="flex items-center gap-2 shadow-xs"
-                    >
-                        <IconPlus size={16} />
-                        Unggah SOP Baru
-                    </Button>
                 </div>
             </div>
 
@@ -280,22 +279,34 @@ export default function SopPage() {
             </div>
 
             {/* Main Content Card */}
-            <CardPlain className="flex flex-col space-y-6 w-full p-4 md:p-6 bg-white border border-slate-200 rounded-xl shadow-xs">
-                {/* Filter & Search Bar */}
-                <div className="flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center">
-                    {/* Search Bar */}
-                    <div className="flex-1 min-w-70">
-                        <TextField
-                            value={searchTerm}
-                            onChange={setSearchTerm}
-                            placeholder="Cari judul SOP, kode dokumen, alat, atau nama file..."
-                            prefixIcon={<IconSearch size={16} />}
-                        />
+            <CardPlain className="flex flex-col space-y-4 md:space-y-6 w-full p-4 md:p-6 bg-white border border-slate-200 rounded-xl shadow-xs">
+                {/* Control Bar: Responsif dari bertumpuk (mobile) ke sebaris (desktop) */}
+                <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between w-full gap-3">
+                    {/* Grup Kiri: Tombol Unggah SOP & Search Input */}
+                    <div className="flex items-center gap-3 w-full lg:w-auto flex-1">
+                        <Button
+                            hierarchy="primary"
+                            size={isMobile ? "lg" : "xl"}
+                            onClick={() => setIsUploadModalOpen(true)}
+                            className={`flex items-center justify-center gap-2 shadow-xs shrink-0 ${!isMobile ? "h-11" : ""}`}
+                            title="Unggah Dokumen SOP Baru"
+                        >
+                            <IconPlus size={16} />
+                        </Button>
+
+                        <div className="w-full">
+                            <TextField
+                                value={searchTerm}
+                                onChange={setSearchTerm}
+                                placeholder="Cari judul SOP, kode dokumen, alat, atau nama file..."
+                                prefixIcon={<IconSearch size={16} />}
+                            />
+                        </div>
                     </div>
 
-                    {/* Dropdown Filters */}
-                    <div className="flex flex-col sm:flex-row items-center gap-3">
-                        <div className="w-full sm:w-55">
+                    {/* Grup Kanan: Dropdown Filters & Reset */}
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+                        <div className="w-full sm:w-56">
                             <SelectDropdown
                                 options={labFilterOptions}
                                 selected={selectedLabFilter}
@@ -307,7 +318,7 @@ export default function SopPage() {
                             />
                         </div>
 
-                        <div className="w-full sm:w-[52.5">
+                        <div className="w-full sm:w-56">
                             <SelectDropdown
                                 options={kategoriFilterOptions}
                                 selected={selectedKategoriFilter}
@@ -329,7 +340,7 @@ export default function SopPage() {
                                     setSelectedKategoriFilter([]);
                                     setSearchTerm("");
                                 }}
-                                className="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 shrink-0 px-2 py-1.5"
+                                className="text-xs text-blue-600 hover:text-blue-800 flex items-center justify-center gap-1 shrink-0 px-2 py-2 sm:py-1.5"
                             >
                                 <IconRefresh size={14} />
                                 Reset Filter
@@ -339,11 +350,13 @@ export default function SopPage() {
                 </div>
 
                 {/* Table Data */}
-                <TableComponent
-                    data={filteredData}
-                    searchTerm={searchTerm}
-                    columns={tableColumns}
-                />
+                <div className="w-full overflow-x-auto">
+                    <TableComponent
+                        data={filteredData}
+                        searchTerm={searchTerm}
+                        columns={tableColumns}
+                    />
+                </div>
             </CardPlain>
 
             {/* MODAL 1: PREVIEW & DETAIL DOKUMEN SOP */}

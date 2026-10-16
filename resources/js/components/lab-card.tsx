@@ -11,6 +11,11 @@ import { SelectLokasi } from "./profil-lab/select-lokasi-card";
 import SelectLaboran from "./profil-lab/select-laboran-card";
 import { TextareaDeskripsi } from "./profil-lab/textarea-deskripsi-card";
 import SingleFileUploadBasic from "./profil-lab/upload-labolatorium-image";
+import {
+    findMatchingFakultasOption,
+    findMatchingLokasiOption,
+    DEFAULT_LABORAN_OPTIONS,
+} from "@/pages/laboratorium/profil/data";
 
 interface OptionFakultas {
     label: string;
@@ -49,9 +54,9 @@ interface LabCardProps {
 }
 
 const DEFAULT_FAKULTAS: OptionFakultas[] = [
-    { label: "FARMASI", value: "FARMASI" },
-    { label: "KIMIA", value: "KIMIA" },
-    { label: "BIOLOGI", value: "BIOLOGI" },
+    { label: "Fakultas Farmasi", value: "Farmasi" },
+    { label: "FISH", value: "FISH" },
+    { label: "FIKST", value: "FIKST" },
 ];
 
 const DEFAULT_LOKASI: OptionLokasi[] = [
@@ -60,15 +65,7 @@ const DEFAULT_LOKASI: OptionLokasi[] = [
     { label: "Gedung C", value: "Gedung C" },
 ];
 
-const DEFAULT_LABORAN: OptionLaboran[] = [
-    { label: "Dr. John Doe", value: "Dr. John Doe", role: "Dosen" },
-    { label: "Dr. Jane Smith", value: "Dr. Jane Smith", role: "Dosen" },
-    {
-        label: "Nurrahmi Arny, A.Md. Farm",
-        value: "Nurrahmi Arny, A.Md. Farm",
-        role: "Laboran",
-    },
-];
+const DEFAULT_LABORAN: OptionLaboran[] = DEFAULT_LABORAN_OPTIONS;
 
 export default function LabCard({
     fakultas = "FARMASI",
@@ -158,7 +155,10 @@ export default function LabCard({
         setSelectedLaboran(selectedName);
 
         const selectedOption = laboranOptions.find(
-            (opt) => opt.value === selectedName,
+            (opt) =>
+                opt.value === selectedName ||
+                opt.value.toLowerCase() === selectedName.toLowerCase() ||
+                opt.label.toLowerCase() === selectedName.toLowerCase(),
         );
 
         const newRole = selectedOption?.role || currentAuthorRole;
@@ -225,7 +225,10 @@ export default function LabCard({
                         <div>
                             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white rounded-full text-xs font-semibold text-gray-700 shadow-sm uppercase tracking-wider">
                                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                                {selectedFakultas}
+                                {findMatchingFakultasOption(
+                                    fakultasOptions,
+                                    selectedFakultas
+                                )?.label || selectedFakultas}
                             </span>
                         </div>
                     )}
@@ -286,7 +289,12 @@ export default function LabCard({
                                 onSelect={handleSelectLokasi}
                             />
                         ) : (
-                            <span>{selectedLokasi}</span>
+                            <span>
+                                {findMatchingLokasiOption(
+                                    lokasiOptions,
+                                    selectedLokasi
+                                )?.label || selectedLokasi}
+                            </span>
                         )}
                     </div>
 

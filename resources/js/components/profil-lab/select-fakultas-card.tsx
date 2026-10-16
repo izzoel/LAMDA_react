@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { IconCheck, IconChevronDown } from "@tabler/icons-react";
+import { findMatchingFakultasOption } from "@/pages/laboratorium/profil/data";
 
 interface OptionItem {
     label: string;
@@ -39,12 +40,13 @@ export function SelectFakultas({
         };
     }, [isOpen]);
 
-    const selectedLabel =
-        options.find((opt) => opt.value === selected)?.label || selected;
+    // Matching cerdas: exact match -> case-insensitive match -> alias/semantic match
+    const matchedOption = findMatchingFakultasOption(options, selected);
+    const activeSelectedValue = matchedOption ? matchedOption.value : selected;
+    const selectedLabel = matchedOption ? matchedOption.label : selected;
 
     return (
         <div ref={dropdownRef} className="relative inline-block text-left">
-            {/* <div ref={dropdownRef}> */}
             {/* Trigger Button - Ukuran Presisi Badge */}
             <button
                 type="button"
@@ -52,8 +54,7 @@ export function SelectFakultas({
                     e.stopPropagation();
                     setIsOpen((prev) => !prev);
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1 bg-white rounded-full text-xs font-semibold text-gray-700 shadow-sm uppercase tracking-wider hover:bg-gray-100
-                hover:cursor-pointer hover-animation-up"
+                className="inline-flex items-center gap-1.5 px-3 py-1 bg-white rounded-full text-xs font-semibold text-gray-700 shadow-sm uppercase tracking-wider hover:bg-gray-100 hover:cursor-pointer hover-animation-up"
             >
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <span>{selectedLabel}</span>
@@ -62,9 +63,11 @@ export function SelectFakultas({
 
             {/* Menu Popover */}
             {isOpen && (
-                <div className="absolute right-0 mt-1.5 w-36 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-30 animate-in fade-in zoom-in-95 ">
+                <div className="absolute right-0 mt-1.5 min-w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-30 animate-in fade-in zoom-in-95">
                     {options.map((option) => {
-                        const isSelected = option.value === selected;
+                        const isSelected =
+                            option.value === activeSelectedValue ||
+                            option.value.toLowerCase() === selected?.toLowerCase();
                         return (
                             <button
                                 key={option.value}
@@ -76,8 +79,8 @@ export function SelectFakultas({
                                 }}
                                 className={`w-full flex items-center justify-between hover:cursor-pointer px-3 py-1.5 text-xs font-semibold transition-colors ${
                                     isSelected
-                                        ? "bg-sky-50 text-sky-900 font-bold "
-                                        : "text-gray-700 hover:bg-gray-100 "
+                                        ? "bg-sky-50 text-sky-900 font-bold"
+                                        : "text-gray-700 hover:bg-gray-100"
                                 }`}
                             >
                                 <span className="uppercase tracking-wide">
@@ -94,7 +97,6 @@ export function SelectFakultas({
                     })}
                 </div>
             )}
-            {/* </div> */}
         </div>
     );
 }

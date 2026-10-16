@@ -78,12 +78,22 @@ admin_lamda/
 │       │   ├── dashboard.tsx          # Halaman beranda ringkasan dashboard
 │       │   ├── welcome.tsx            # Landing page publik aplikasi
 │       │   └── laboratorium/
-│       │       ├── profil.tsx         # Manajemen katalog & kartu laboratorium
+│       │       ├── profil/
+│       │       │   ├── index.tsx      # Katalog kartu 17 laboratorium, filter & modal tambah lab
+│       │       │   └── data.tsx       # Dataset 17 lab, filter fakultas & lokasi gedung
 │       │       ├── aset/
 │       │       │   ├── index.tsx      # Manajemen tabel data aset & inventaris lab
 │       │       │   └── data.tsx       # Definisi skema kolom & dataset aset
-│       │       ├── sop.tsx            # Manajemen pusat dokumen SOP laboratorium
-│       │       └── sop-data.tsx       # Data 17 lab, kategori SOP, & generator data
+│       │       ├── sop/
+│       │       │   ├── index.tsx      # Manajemen pusat dokumen SOP laboratorium
+│       │       │   └── data.tsx       # Data 17 lab, kategori SOP, & generator data
+│       │       └── administrasi/
+│       │           ├── struktur/
+│       │           │   ├── index.tsx  # Visualisasi bagan pohon silsilah (Org Chart) & katalog
+│       │           │   └── data.tsx   # Hierarki data personel, tupoksi & sertifikasi
+│       │           └── user/
+│       │               ├── index.tsx  # Manajemen pengguna, role, status & audit keamanan (2FA/Passkey)
+│       │               └── data.tsx   # Dataset dummy, helper role, badge & konfigurasi kolom
 │       └── routes/                    # Generator rute otomatis wayfinder
 └── routes/
     ├── web.php                        # Rute aplikasi utama & modul laboratorium
@@ -130,7 +140,7 @@ admin_lamda/
 
 ---
 
-### 4. 📑 Modul SOP Laboratorium (`resources/js/pages/laboratorium/sop.tsx` & `sop-data.tsx`)
+### 4. 📑 Modul SOP Laboratorium (`resources/js/pages/laboratorium/sop/`)
 - **Cakupan 17 Laboratorium**:
   1. Lab Rekayasa Perangkat Lunak
   2. Lab Jaringan Komputer & Siber
@@ -169,7 +179,45 @@ admin_lamda/
 
 ---
 
-## 5. 🚀 Panduan Menjalankan & Mengembangkan Proyek
+### 6. 🌐 RESTful API & Dokumentasi OpenAPI (Dedoc Scramble)
+Aplikasi LAMDA telah dilengkapi dengan **RESTful API v1** lengkap untuk seluruh entitas sistem, terintegrasi otomatis dengan **Scramble OpenAPI Generator**:
+
+- **Akses UI Dokumentasi API Interaktif**: [`http://localhost:8000/docs/api`](http://localhost:8000/docs/api)
+- **Ekspor Spesifikasi OpenAPI 3.1 JSON**: [`http://localhost:8000/docs/api.json`](http://localhost:8000/docs/api.json)
+
+#### Daftar Endpoint RESTful API (`/api/v1`):
+
+| Resource | Method | Endpoint | Keterangan |
+| :--- | :--- | :--- | :--- |
+| **Laboratorium** | `GET` | `/api/v1/laboratoriums` | Menampilkan daftar seluruh laboratorium (filter pencarian & pagination) |
+| | `POST` | `/api/v1/laboratoriums` | Menambahkan laboratorium baru |
+| | `GET` | `/api/v1/laboratoriums/{id}` | Menampilkan detail spesifik laboratorium beserta relasi aset |
+| | `PUT/PATCH` | `/api/v1/laboratoriums/{id}` | Memperbarui informasi laboratorium |
+| | `DELETE` | `/api/v1/laboratoriums/{id}` | Menghapus data laboratorium |
+| **Aset & Inventaris** | `GET` | `/api/v1/assets` | Menampilkan daftar aset (filter jenis: Alat/Cair/Padat/Gas, kondisi, ketersediaan) |
+| | `POST` | `/api/v1/assets` | Mendaftarkan aset/alat baru |
+| | `GET` | `/api/v1/assets/{id}` | Detail informasi aset |
+| | `PUT/PATCH` | `/api/v1/assets/{id}` | Memperbarui data aset & status ketersediaan |
+| | `DELETE` | `/api/v1/assets/{id}` | Menghapus aset dari inventaris |
+| **SOP Laboratorium** | `GET` | `/api/v1/sops` | Daftar dokumen SOP (filter per lab & kategori) |
+| | `POST` | `/api/v1/sops` | Menyimpan dokumen SOP baru |
+| | `GET` | `/api/v1/sops/{id}` | Detail dokumen SOP |
+| | `PUT/PATCH` | `/api/v1/sops/{id}` | Memperbarui versi/data SOP |
+| | `DELETE` | `/api/v1/sops/{id}` | Menghapus dokumen SOP |
+| **Struktur Organisasi** | `GET` | `/api/v1/organisasi` | Mengambil pohon hierarki organisasi (`?tree=true`) atau daftar datar |
+| | `POST` | `/api/v1/organisasi` | Menambahkan personel baru ke dalam struktur |
+| | `GET` | `/api/v1/organisasi/{id}` | Detail profil, tupoksi, dan sertifikasi personel |
+| | `PUT/PATCH` | `/api/v1/organisasi/{id}` | Memperbarui data personel |
+| | `DELETE` | `/api/v1/organisasi/{id}` | Menghapus personel dari struktur |
+| **User & Hak Akses** | `GET` | `/api/v1/users` | Menampilkan daftar pengguna terdaftar |
+| | `POST` | `/api/v1/users` | Mendaftarkan pengguna baru |
+| | `GET` | `/api/v1/users/{id}` | Menampilkan detail akun pengguna |
+| | `PUT/PATCH` | `/api/v1/users/{id}` | Memperbarui data akun pengguna |
+| | `DELETE` | `/api/v1/users/{id}` | Menghapus akun pengguna |
+
+---
+
+## 7. 🚀 Panduan Menjalankan & Mengembangkan Proyek
 
 ### Prasyarat Lingkungan
 - **PHP** >= 8.3 dengan ekstensi `pdo`, `mbstring`, `openssl`, `sodium`
@@ -201,20 +249,22 @@ composer dev
 # Pilihan 2: Menjalankan secara terpisah di 2 terminal
 npm run dev          # Terminal 1: Vite HMR Server
 php artisan serve    # Terminal 2: Laravel Backend Server
+
+# 6. Akses Dokumentasi API Scramble
+# Buka browser ke: http://localhost:8000/docs/api
 ```
 
 ---
 
-## 6. 📌 Rencana Aksi & Rekomendasi Pengembangan Lanjutan
+## 8. 📌 Rencana Aksi & Rekomendasi Pengembangan Lanjutan
 
 | Prioritas | Modul / Fitur | Rencana Aksi Teknis |
 | :---: | :--- | :--- |
-| **Tinggi** | **Eloquent Models & Migrations** | Membuat migration & model untuk tabel `laboratoriums`, `assets`, dan `sops` agar data terhubung permanen ke database MySQL. |
-| **Tinggi** | **Controller & API Endpoints** | Mengganti rute `Route::inertia()` statis pada `routes/web.php` dengan Resource Controller (`LaboratoriumController`, `AssetController`, `SopController`). |
 | **Sedang** | **Modul Formulir Pengajuan (`/form`)** | Mengembangkan halaman permohonan penggunaan lab dan peminjaman alat dengan flow status: *Draft -> Diajukan -> Disetujui / Ditolak -> Selesai*. |
 | **Sedang** | **File Storage & Upload Dokumen** | Mengintegrasikan upload PDF dokumen SOP dan foto lab dengan Laravel Storage (`public` / `s3 disk`) dan preview viewer interaktif. |
-| **Rendah** | **Role & Permission Management** | Menambahkan role *Superadmin*, *Kepala Lab*, *Laboran*, dan *User Umum* menggunakan middleware hak akses. |
+| **Rendah** | **Sanctum / Passport Token Authentication** | Menambahkan API Token Authentication untuk akses client mobile atau pihak ketiga. |
 | **Rendah** | **Export / Import Data** | Fitur export data inventaris aset dan katalog SOP ke format Excel (.xlsx) dan laporan PDF. |
 
 ---
 *Dokumen ini dibuat sebagai acuan teknis dan ringkasan status operasional proyek LAMDA.*
+

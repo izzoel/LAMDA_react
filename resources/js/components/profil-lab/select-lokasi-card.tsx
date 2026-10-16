@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { IconCheck, IconChevronDown } from "@tabler/icons-react";
+import { findMatchingLokasiOption } from "@/pages/laboratorium/profil/data";
 
 export interface OptionLokasi {
     label: string;
@@ -39,8 +40,9 @@ export function SelectLokasi({
         };
     }, [isOpen]);
 
-    const selectedLabel =
-        options.find((opt) => opt.value === selected)?.label || selected;
+    const matchedOption = findMatchingLokasiOption(options, selected);
+    const activeSelectedValue = matchedOption ? matchedOption.value : selected;
+    const selectedLabel = matchedOption ? matchedOption.label : selected;
 
     return (
         <div ref={dropdownRef} className="relative inline-block text-left">
@@ -50,7 +52,7 @@ export function SelectLokasi({
                     e.stopPropagation();
                     setIsOpen((prev) => !prev);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-md px-2.5 bg-white  text-gray-700 shadow-sm shadow-gray-400 hover:bg-gray-50 hover:cursor-pointer transition-all hover-animation-up"
+                className="inline-flex items-center gap-1.5 rounded-md px-2.5 bg-white text-gray-700 shadow-sm shadow-gray-400 hover:bg-gray-50 hover:cursor-pointer transition-all hover-animation-up"
             >
                 <span className="truncate">{selectedLabel}</span>
                 <IconChevronDown
@@ -65,7 +67,9 @@ export function SelectLokasi({
             {isOpen && (
                 <div className="absolute left-0 mt-1.5 w-40 max-h-60 overflow-y-auto bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50 animate-in fade-in zoom-in-95">
                     {options.map((option) => {
-                        const isSelected = option.value === selected;
+                        const isSelected =
+                            option.value === activeSelectedValue ||
+                            option.value.toLowerCase() === selected?.toLowerCase();
                         return (
                             <button
                                 key={option.value}

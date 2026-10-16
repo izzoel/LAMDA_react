@@ -1,4 +1,4 @@
-import { IconTrash, IconEdit, IconEye, IconDownload, IconFileTypePdf, IconFileText } from "@tabler/icons-react";
+import { IconTrash, IconEdit, IconEye, IconDownload, IconFileTypePdf } from "@tabler/icons-react";
 import { type Column } from "@idds/react";
 
 export interface SopItem {
