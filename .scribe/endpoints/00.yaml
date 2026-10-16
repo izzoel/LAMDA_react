@@ -1,0 +1,2490 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/laboratoriums
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan daftar semua laboratorium.'
+      description: |-
+        Endpoint ini mengembalikan daftar seluruh profil laboratorium terpadu,
+        mendukung pencarian dan filter per fakultas/status.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Daftar laboratorium berhasil diambil.","data":{"current_page":1,"data":[{"id":1,"nama":"Batra & Kosmetika","fakultas":"Farmasi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#D3E0D6","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":2,"nama":"Kimia Farmasi","fakultas":"Farmasi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#E8EDDA","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":3,"nama":"Teknologi Sediaan Farmasi","fakultas":"Farmasi","gedung":"Lab Terpadu","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":8,"warna":"#CADEEE","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-26T12:31:03.000000Z","assets":[]},{"id":4,"nama":"Farmakologi","fakultas":"Farmasi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#F3FDDC","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":5,"nama":"Sediaan Steril","fakultas":"Farmasi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#FAF6D9","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-09-14T01:15:01.000000Z","assets":[]},{"id":6,"nama":"Mikrobiologi","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#EECCEB","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":7,"nama":"Kimia","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#FBD4DA","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":8,"nama":"Patologi Klinis","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#E4E8C9","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":9,"nama":"Flebotomi & Sitohistologi","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#FAFADD","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":10,"nama":"CBT","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#DAEBD9","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-10-08T10:07:45.000000Z","assets":[]},{"id":11,"nama":"OSCE","fakultas":"Farmasi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#F4F8F4","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":12,"nama":"Gizi Kuliner & Ilmu Bahan Makanan","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#DDFCD8","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":13,"nama":"Penilaian Status Gizi","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#FBDFF9","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":14,"nama":"Mini Teaching Hospital","fakultas":"Ilmu Kesehatan dan Sains Teknologi","gedung":"Gedung C","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#D7CDDB","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]},{"id":15,"nama":"Peradilan Semu","fakultas":"Ilmu Sosial dan Humaniora","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#EEF5EE","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]}],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/laboratoriums?page=1","from":1,"last_page":2,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/laboratoriums?page=2","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/laboratoriums?page=1","label":"1","page":1,"active":true},{"url":"http:\/\/localhost:8000\/api\/v1\/laboratoriums?page=2","label":"2","page":2,"active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/laboratoriums?page=2","label":"Next &raquo;","page":2,"active":false}],"next_page_url":"http:\/\/localhost:8000\/api\/v1\/laboratoriums?page=2","path":"http:\/\/localhost:8000\/api\/v1\/laboratoriums","per_page":15,"prev_page_url":null,"to":15,"total":17}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/laboratoriums
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Membuat data laboratorium baru.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kode:
+        custom: []
+        name: kode
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama:
+        custom: []
+        name: nama
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      fakultas:
+        custom: []
+        name: fakultas
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      gedung:
+        custom: []
+        name: gedung
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      ruangan:
+        custom: []
+        name: ruangan
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      kepala_lab:
+        custom: []
+        name: kepala_lab
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: i
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      laboran:
+        custom: []
+        name: laboran
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'y'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      deskripsi:
+        custom: []
+        name: deskripsi
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      kapasitas:
+        custom: []
+        name: kapasitas
+        description: 'Must be at least 1.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: Nonaktif
+        type: string
+        enumValues:
+          - Aktif
+          - Pemeliharaan
+          - Nonaktif
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      kode: b
+      nama: 'n'
+      fakultas: g
+      gedung: z
+      ruangan: m
+      kepala_lab: i
+      laboran: 'y'
+      deskripsi: architecto
+      kapasitas: 22
+      status: Nonaktif
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/laboratoriums/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan detail satu laboratorium.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the laboratorium.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Detail laboratorium berhasil diambil.","data":{"id":1,"nama":"Batra & Kosmetika","fakultas":"Farmasi","gedung":"Gedung B","deskripsi":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus modi est neque porro expedita, quisquam officia! Molestiae cum eligendi doloribus ad provident eos quibusdam animi unde, at, autem quam deleniti.","gambar":"laboratorium\/profil\/img.jpg","id_laboran":1,"warna":"#D3E0D6","created_at":"2026-05-25T08:22:46.000000Z","updated_at":"2026-05-25T08:22:46.000000Z","assets":[]}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/laboratoriums/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Memperbarui data laboratorium.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the laboratorium.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kode:
+        custom: []
+        name: kode
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama:
+        custom: []
+        name: nama
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      fakultas:
+        custom: []
+        name: fakultas
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      gedung:
+        custom: []
+        name: gedung
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      ruangan:
+        custom: []
+        name: ruangan
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      kepala_lab:
+        custom: []
+        name: kepala_lab
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      laboran:
+        custom: []
+        name: laboran
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: i
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      deskripsi:
+        custom: []
+        name: deskripsi
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      kapasitas:
+        custom: []
+        name: kapasitas
+        description: 'Must be at least 1.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: Pemeliharaan
+        type: string
+        enumValues:
+          - Aktif
+          - Pemeliharaan
+          - Nonaktif
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      nama: b
+      fakultas: 'n'
+      gedung: g
+      ruangan: z
+      kepala_lab: m
+      laboran: i
+      deskripsi: architecto
+      kapasitas: 22
+      status: Pemeliharaan
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/laboratoriums/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menghapus data laboratorium.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the laboratorium.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/assets
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan daftar seluruh aset inventaris.'
+      description: 'Mendukung filter pencarian berdasarkan kode, nama, jenis bahan/alat, kondisi, dan laboratorium.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Daftar aset laboratorium berhasil diambil.","data":{"current_page":1,"data":[],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/assets?page=1","from":null,"last_page":1,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/assets?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/assets?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost:8000\/api\/v1\/assets","per_page":15,"prev_page_url":null,"to":null,"total":0}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/assets
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Mendaftarkan data aset/alat/bahan baru.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kode:
+        custom: []
+        name: kode
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama:
+        custom: []
+        name: nama
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      laboratorium_id:
+        custom: []
+        name: laboratorium_id
+        description: 'Must match an existing stored value.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      laboratorium_nama:
+        custom: []
+        name: laboratorium_nama
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      penyimpanan:
+        custom: []
+        name: penyimpanan
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      jenis:
+        custom: []
+        name: jenis
+        description: ''
+        required: true
+        example: Gas
+        type: string
+        enumValues:
+          - Alat
+          - Cair
+          - Padat
+          - Gas
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      kondisi:
+        custom: []
+        name: kondisi
+        description: ''
+        required: false
+        example: 'Rusak Ringan'
+        type: string
+        enumValues:
+          - Baik
+          - 'Rusak Ringan'
+          - 'Rusak Berat'
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      ketersediaan:
+        custom: []
+        name: ketersediaan
+        description: ''
+        required: false
+        example: Dipinjam
+        type: string
+        enumValues:
+          - Tersedia
+          - Dipinjam
+          - Pemeliharaan
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      jumlah:
+        custom: []
+        name: jumlah
+        description: 'Must be at least 1.'
+        required: false
+        example: 27
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      satuan:
+        custom: []
+        name: satuan
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: i
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      spesifikasi:
+        custom: []
+        name: spesifikasi
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      kode: b
+      nama: 'n'
+      laboratorium_nama: g
+      penyimpanan: z
+      jenis: Gas
+      kondisi: 'Rusak Ringan'
+      ketersediaan: Dipinjam
+      jumlah: 27
+      satuan: i
+      spesifikasi: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/assets/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan detail satu aset.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Asset] 16"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/assets/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Memperbarui informasi aset.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kode:
+        custom: []
+        name: kode
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama:
+        custom: []
+        name: nama
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      laboratorium_id:
+        custom: []
+        name: laboratorium_id
+        description: 'Must match an existing stored value.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      laboratorium_nama:
+        custom: []
+        name: laboratorium_nama
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      penyimpanan:
+        custom: []
+        name: penyimpanan
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      jenis:
+        custom: []
+        name: jenis
+        description: ''
+        required: false
+        example: Alat
+        type: string
+        enumValues:
+          - Alat
+          - Cair
+          - Padat
+          - Gas
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      kondisi:
+        custom: []
+        name: kondisi
+        description: ''
+        required: false
+        example: 'Rusak Ringan'
+        type: string
+        enumValues:
+          - Baik
+          - 'Rusak Ringan'
+          - 'Rusak Berat'
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      ketersediaan:
+        custom: []
+        name: ketersediaan
+        description: ''
+        required: false
+        example: Tersedia
+        type: string
+        enumValues:
+          - Tersedia
+          - Dipinjam
+          - Pemeliharaan
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      jumlah:
+        custom: []
+        name: jumlah
+        description: 'Must be at least 1.'
+        required: false
+        example: 66
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      satuan:
+        custom: []
+        name: satuan
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      spesifikasi:
+        custom: []
+        name: spesifikasi
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      nama: b
+      laboratorium_nama: 'n'
+      penyimpanan: g
+      jenis: Alat
+      kondisi: 'Rusak Ringan'
+      ketersediaan: Tersedia
+      jumlah: 66
+      satuan: m
+      spesifikasi: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/assets/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menghapus aset dari inventaris.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the asset.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/sops
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan daftar dokumen SOP laboratorium.'
+      description: 'Mendukung filter pencarian berdasarkan nama, kategori (Penggunaan Alat, Pedoman Lab, K3), dan laboratorium.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Daftar dokumen SOP berhasil diambil.","data":{"current_page":1,"data":[{"id":1,"kode":"SOP-LNVMUV","judul":"SOP Penggunaan LAB CBT","laboratorium":"CBT","id_laboratorium":10,"kategori":"SOP Pedoman Laboratorium","nama_alat":null,"deskripsi":null,"versi":"v1.0","file_name":"sertifikat-ppi-rina-melati.pdf","file_path":"sop\/IYxCo0ybjzoImYz9VSbxXyv5GuJV7ZrB14Armby8.pdf","file_size":"1.48 MB","tgl_upload":"2026-10-08T00:00:00.000000Z","status":"Aktif","uploaded_by":"admin","created_at":"2026-10-08T11:24:54.000000Z","updated_at":"2026-10-08T11:24:54.000000Z"}],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/sops?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/sops?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/sops?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost:8000\/api\/v1\/sops","per_page":15,"prev_page_url":null,"to":1,"total":1}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/sops
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menyimpan data dokumen SOP baru.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kode:
+        custom: []
+        name: kode
+        description: 'Must not be greater than 50 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      judul:
+        custom: []
+        name: judul
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      laboratorium:
+        custom: []
+        name: laboratorium
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      kategori:
+        custom: []
+        name: kategori
+        description: ''
+        required: true
+        example: 'SOP Penggunaan Alat'
+        type: string
+        enumValues:
+          - 'SOP Penggunaan Alat'
+          - 'SOP Pedoman Laboratorium'
+          - 'SOP Keselamatan Kerja & K3'
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama_alat:
+        custom: []
+        name: nama_alat
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      deskripsi:
+        custom: []
+        name: deskripsi
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      versi:
+        custom: []
+        name: versi
+        description: 'Must not be greater than 20 characters.'
+        required: false
+        example: ngzmiyvdljnikhwa
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      file_name:
+        custom: []
+        name: file_name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'y'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      file_size:
+        custom: []
+        name: file_size
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: k
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      tgl_upload:
+        custom: []
+        name: tgl_upload
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-10-16T13:54:22'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: Aktif
+        type: string
+        enumValues:
+          - Aktif
+          - Revisi
+          - Arsip
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      uploaded_by:
+        custom: []
+        name: uploaded_by
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: c
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      kode: b
+      judul: 'n'
+      laboratorium: g
+      kategori: 'SOP Penggunaan Alat'
+      nama_alat: z
+      deskripsi: architecto
+      versi: ngzmiyvdljnikhwa
+      file_name: 'y'
+      file_size: k
+      tgl_upload: '2026-10-16T13:54:22'
+      status: Aktif
+      uploaded_by: c
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/sops/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan detail satu dokumen SOP.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the sop.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Detail dokumen SOP berhasil diambil.","data":{"id":1,"kode":"SOP-LNVMUV","judul":"SOP Penggunaan LAB CBT","laboratorium":"CBT","id_laboratorium":10,"kategori":"SOP Pedoman Laboratorium","nama_alat":null,"deskripsi":null,"versi":"v1.0","file_name":"sertifikat-ppi-rina-melati.pdf","file_path":"sop\/IYxCo0ybjzoImYz9VSbxXyv5GuJV7ZrB14Armby8.pdf","file_size":"1.48 MB","tgl_upload":"2026-10-08T00:00:00.000000Z","status":"Aktif","uploaded_by":"admin","created_at":"2026-10-08T11:24:54.000000Z","updated_at":"2026-10-08T11:24:54.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/sops/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Memperbarui informasi dokumen SOP.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the sop.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      kode:
+        custom: []
+        name: kode
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      judul:
+        custom: []
+        name: judul
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      laboratorium:
+        custom: []
+        name: laboratorium
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      kategori:
+        custom: []
+        name: kategori
+        description: ''
+        required: false
+        example: 'SOP Penggunaan Alat'
+        type: string
+        enumValues:
+          - 'SOP Penggunaan Alat'
+          - 'SOP Pedoman Laboratorium'
+          - 'SOP Keselamatan Kerja & K3'
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nama_alat:
+        custom: []
+        name: nama_alat
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      deskripsi:
+        custom: []
+        name: deskripsi
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      versi:
+        custom: []
+        name: versi
+        description: 'Must not be greater than 20 characters.'
+        required: false
+        example: ngzmiyvdljnikhwa
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      file_name:
+        custom: []
+        name: file_name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'y'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      file_size:
+        custom: []
+        name: file_size
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: k
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      tgl_upload:
+        custom: []
+        name: tgl_upload
+        description: 'Must be a valid date.'
+        required: false
+        example: '2026-10-16T13:54:22'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: Revisi
+        type: string
+        enumValues:
+          - Aktif
+          - Revisi
+          - Arsip
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      uploaded_by:
+        custom: []
+        name: uploaded_by
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: c
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      judul: b
+      laboratorium: 'n'
+      kategori: 'SOP Penggunaan Alat'
+      nama_alat: g
+      deskripsi: architecto
+      versi: ngzmiyvdljnikhwa
+      file_name: 'y'
+      file_size: k
+      tgl_upload: '2026-10-16T13:54:22'
+      status: Revisi
+      uploaded_by: c
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/sops/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menghapus dokumen SOP.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the sop.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/organisasi
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan hierarki struktur organisasi laboratorium.'
+      description: 'Mengembalikan pohon struktur hierarki pimpinan, koordinator, dan pranata lab.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Pohon hierarki organisasi berhasil diambil.","data":null}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/organisasi
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menambahkan personel baru ke dalam struktur organisasi.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      parent_id:
+        custom: []
+        name: parent_id
+        description: 'Must match an existing stored value.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      nama:
+        custom: []
+        name: nama
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nip:
+        custom: []
+        name: nip
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      jabatan:
+        custom: []
+        name: jabatan
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      level:
+        custom: []
+        name: level
+        description: ''
+        required: true
+        example: staf
+        type: string
+        enumValues:
+          - pimpinan
+          - koordinator
+          - sub_koordinator
+          - laboran
+          - staf
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      divisi:
+        custom: []
+        name: divisi
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      laboratorium:
+        custom: []
+        name: laboratorium
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: false
+        example: gulgowski.asia@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      telepon:
+        custom: []
+        name: telepon
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: j
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: Aktif
+        type: string
+        enumValues:
+          - Aktif
+          - Cuti
+          - 'Tugas Belajar'
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      tupoksi:
+        custom: []
+        name: tupoksi
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sertifikasi:
+        custom: []
+        name: sertifikasi
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      nama: b
+      nip: 'n'
+      jabatan: g
+      level: staf
+      divisi: z
+      laboratorium: m
+      email: gulgowski.asia@example.com
+      telepon: j
+      status: Aktif
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/organisasi/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan detail satu personel organisasi.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the organisasi.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Organisasi] 16"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/organisasi/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Memperbarui data personel organisasi.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the organisasi.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      parent_id:
+        custom: []
+        name: parent_id
+        description: 'Must match an existing stored value.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      nama:
+        custom: []
+        name: nama
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      nip:
+        custom: []
+        name: nip
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      jabatan:
+        custom: []
+        name: jabatan
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: g
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      level:
+        custom: []
+        name: level
+        description: ''
+        required: false
+        example: pimpinan
+        type: string
+        enumValues:
+          - pimpinan
+          - koordinator
+          - sub_koordinator
+          - laboran
+          - staf
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      divisi:
+        custom: []
+        name: divisi
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      laboratorium:
+        custom: []
+        name: laboratorium
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: false
+        example: gulgowski.asia@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      telepon:
+        custom: []
+        name: telepon
+        description: 'Must not be greater than 50 characters.'
+        required: false
+        example: j
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: Aktif
+        type: string
+        enumValues:
+          - Aktif
+          - Cuti
+          - 'Tugas Belajar'
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      tupoksi:
+        custom: []
+        name: tupoksi
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      sertifikasi:
+        custom: []
+        name: sertifikasi
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      nama: b
+      nip: 'n'
+      jabatan: g
+      level: pimpinan
+      divisi: z
+      laboratorium: m
+      email: gulgowski.asia@example.com
+      telepon: j
+      status: Aktif
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/organisasi/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menghapus personel dari struktur organisasi.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the organisasi.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/users
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan daftar akun pengguna sistem LAMDA.'
+      description: 'Menampilkan data akun, status otentikasi dua faktor (2FA), dan biometrik passkey.'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Daftar pengguna berhasil diambil.","data":{"current_page":1,"data":[{"id":5,"name":"Zulfahmi Ramadhani","email":"zulfahmiramadhani@zetware.id","email_verified_at":null,"two_factor_confirmed_at":null,"created_at":"2026-05-26T05:08:15.000000Z","updated_at":"2026-06-02T19:03:45.000000Z"},{"id":2,"name":"Test User","email":"test@example.com","email_verified_at":"2026-05-19T13:40:54.000000Z","two_factor_confirmed_at":null,"created_at":"2026-05-19T13:40:55.000000Z","updated_at":"2026-05-19T13:40:55.000000Z"},{"id":1,"name":"admin","email":"admin@mail.com","email_verified_at":null,"two_factor_confirmed_at":null,"created_at":"2026-05-18T19:14:08.000000Z","updated_at":"2026-05-18T19:14:08.000000Z"},{"id":7,"name":"admin","email":"admin2@mail.com","email_verified_at":null,"two_factor_confirmed_at":null,"created_at":null,"updated_at":"2026-09-15T09:01:59.000000Z"}],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/users?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/users?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/users?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost:8000\/api\/v1\/users","per_page":15,"prev_page_url":null,"to":4,"total":4}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/users
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Membuat akun pengguna baru.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: zbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: true
+        example: '-0pBNvYgxw'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: b
+      email: zbailey@example.net
+      password: '-0pBNvYgxw'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/users/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan profil detail pengguna.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Detail pengguna berhasil diambil.","data":{"id":1,"name":"admin","email":"admin@mail.com","email_verified_at":null,"two_factor_confirmed_at":null,"created_at":"2026-05-18T19:14:08.000000Z","updated_at":"2026-05-18T19:14:08.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/users/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Memperbarui data pengguna.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: 'Must be at least 8 characters.'
+        required: false
+        example: ']|{+-0pBNvYg'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      name: b
+      password: ']|{+-0pBNvYg'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/users/{id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menghapus akun pengguna.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/fakultas
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan daftar semua fakultas.'
+      description: |-
+        Endpoint ini mengembalikan daftar fakultas yang terdaftar,
+        mendukung pencarian berdasarkan nama fakultas dan opsi pagination.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Daftar fakultas berhasil diambil.","data":{"current_page":1,"data":[{"id":1,"fakultas":"Farmasi","created_at":"2026-10-05T08:09:19.000000Z","updated_at":"2026-10-05T08:55:17.000000Z"},{"id":2,"fakultas":"FIKST","created_at":"2026-10-05T08:09:19.000000Z","updated_at":"2026-10-16T13:18:42.000000Z"},{"id":3,"fakultas":"FISH","created_at":"2026-10-05T08:09:19.000000Z","updated_at":"2026-10-05T08:55:38.000000Z"}],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/fakultas?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/fakultas?page=1","links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/fakultas?page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"next_page_url":null,"path":"http:\/\/localhost:8000\/api\/v1\/fakultas","per_page":15,"prev_page_url":null,"to":3,"total":3}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/fakultas
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menyimpan data fakultas baru.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      fakultas:
+        custom: []
+        name: fakultas
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      fakultas: b
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/fakultas/{fakultas_id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menampilkan detail satu fakultas.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      fakultas_id:
+        custom: []
+        name: fakultas_id
+        description: 'The ID of the fakultas.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      fakultas_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"status":"success","message":"Detail fakultas berhasil diambil.","data":{"id":1,"fakultas":"Farmasi","created_at":"2026-10-05T08:09:19.000000Z","updated_at":"2026-10-05T08:55:17.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/fakultas/{fakultas_id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Memperbarui data fakultas.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      fakultas_id:
+        custom: []
+        name: fakultas_id
+        description: 'The ID of the fakultas.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      fakultas_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      fakultas:
+        custom: []
+        name: fakultas
+        description: ''
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/fakultas/{fakultas_id}'
+    metadata:
+      custom: []
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Menghapus data fakultas.'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      fakultas_id:
+        custom: []
+        name: fakultas_id
+        description: 'The ID of the fakultas.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      fakultas_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
