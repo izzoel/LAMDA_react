@@ -9,15 +9,12 @@ import {
 } from "@idds/react";
 import {
     IconSearch,
-    IconPlus,
     IconBuildingHospital,
     IconX,
     IconCheck,
     IconUpload,
     IconTrash,
     IconPhoto,
-    IconUsers,
-    IconMapPin,
     IconAlertCircle,
 } from "@tabler/icons-react";
 import {
@@ -52,15 +49,10 @@ export default function ProfilLaboratoriumPage() {
 
     // Form State untuk Tambah Laboratorium
     const [formNama, setFormNama] = useState("");
-    const [formKode, setFormKode] = useState("");
-    const [formFakultas, setFormFakultas] = useState<any[]>([]);
-    const [formLokasi, setFormLokasi] = useState<any[]>([]);
-    const [formRuangan, setFormRuangan] = useState("");
+    const [formFakultas, setFormFakultas] = useState<string>("");
+    const [formLokasi, setFormLokasi] = useState<string>("");
     const [formLaboran, setFormLaboran] = useState("");
-    const [formRoleLaboran, setFormRoleLaboran] = useState<any[]>([]);
     const [formDeskripsi, setFormDeskripsi] = useState("");
-    const [formKapasitas, setFormKapasitas] = useState("");
-    const [formStatus, setFormStatus] = useState<any[]>([]);
     const [formImage, setFormImage] = useState<File | null>(null);
     const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -175,15 +167,10 @@ export default function ProfilLaboratoriumPage() {
 
     const handleOpenAddModal = () => {
         setFormNama("");
-        setFormKode("");
-        setFormFakultas([]);
-        setFormLokasi([]);
-        setFormRuangan("");
+        setFormFakultas("");
+        setFormLokasi("");
         setFormLaboran("");
-        setFormRoleLaboran([]);
         setFormDeskripsi("");
-        setFormKapasitas("");
-        setFormStatus([]);
         setFormImage(null);
         setImagePreviewUrl(null);
         setFormErrors({});
@@ -263,13 +250,16 @@ export default function ProfilLaboratoriumPage() {
             errors.nama = "Nama Laboratorium wajib diisi.";
         }
 
-        if (!formFakultas.length || !formFakultas[0]?.value) {
+        if (!formFakultas.trim()) {
             errors.fakultas = "Fakultas wajib dipilih.";
         }
 
-        const parsedKapasitas = parseInt(formKapasitas);
-        if (isNaN(parsedKapasitas) || parsedKapasitas <= 0) {
-            errors.kapasitas = "Kapasitas harus berupa angka lebih dari 0.";
+        if (!formLaboran.trim()) {
+            errors.laboran = "Laboran wajib diisi.";
+        }
+
+        if (!formLokasi.trim()) {
+            errors.lokasi = "Lokasi wajib diisi.";
         }
 
         if (Object.keys(errors).length > 0) {
@@ -277,31 +267,40 @@ export default function ProfilLaboratoriumPage() {
             return;
         }
 
-        const fakVal = formFakultas[0]?.value || "";
-        const lokVal = formLokasi[0]?.value || "";
-        const roleVal = formRoleLaboran[0]?.value || "Laboran";
-        const statusVal = (formStatus[0]?.value || "Aktif") as LabProfileItem["status"];
+        const fakVal = formFakultas.trim();
+        const lokVal = formLokasi.trim();
+        const matchedLaboran = laboranOptions.find(
+            (opt) => opt.value.toLowerCase() === formLaboran.trim().toLowerCase()
+        );
+        const roleVal = matchedLaboran?.role || "Laboran";
 
         const newLab: LabProfileItem = {
             id: Date.now(),
-            kode: formKode.trim() || `LAB-${Date.now().toString().slice(-4)}`,
+            kode: `LAB-${Date.now().toString().slice(-4)}`,
             laboratorium: formNama.trim(),
             fakultas: fakVal,
             lokasi: lokVal || "Lab Terpadu",
-            ruangan: formRuangan.trim() || "-",
+            ruangan: "-",
             deskripsi:
                 formDeskripsi.trim() ||
                 "Laboratorium terpadu untuk pengujian, riset, dan praktikum mahasiswa.",
             authorName: formLaboran.trim() || "-",
             authorRole: roleVal,
-            kapasitas: parsedKapasitas || 0,
-            status: statusVal,
+            kapasitas: 0,
+            status: "Aktif",
             mediaSrc: imagePreviewUrl || undefined,
         };
 
         setLabsData([newLab, ...labsData]);
         setIsAddModalOpen(false);
         setToastMessage(`Laboratorium "${newLab.laboratorium}" berhasil ditambahkan.`);
+    };
+
+    const handleDeleteLab = (lab: LabProfileItem) => {
+        if (confirm(`Apakah Anda yakin ingin menghapus profil "${lab.laboratorium}"?`)) {
+            setLabsData((prev) => prev.filter((item) => item.id !== lab.id));
+            setToastMessage(`Laboratorium "${lab.laboratorium}" berhasil dihapus.`);
+        }
     };
 
     // Modal options for dropdown without "Semua Fakultas"
@@ -429,6 +428,7 @@ export default function ProfilLaboratoriumPage() {
                                         )
                                     );
                                 }}
+                                onDelete={() => handleDeleteLab(item)}
                             />
                         ))}
                     </div>
@@ -461,9 +461,7 @@ export default function ProfilLaboratoriumPage() {
                         {/* Header Modal */}
                         <div className="flex items-start justify-between pb-4 border-b border-slate-100">
                             <div className="flex items-center gap-3">
-                                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 border border-blue-100">
-                                    <IconBuildingHospital size={24} />
-                                </div>
+                                
                                 <div>
                                     <h3
                                         id="modal-title"
@@ -519,7 +517,7 @@ export default function ProfilLaboratoriumPage() {
                                                     });
                                                 }
                                             }}
-                                            placeholder="Contoh: Lab Kimia Terapan"
+                                            placeholder="Contoh: Kimia Terapan"
                                         />
                                         {formErrors.nama && (
                                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -529,27 +527,21 @@ export default function ProfilLaboratoriumPage() {
                                         )}
                                     </div>
                                     <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Kode Lab
-                                        </label>
-                                        <TextField
-                                            value={formKode}
-                                            onChange={setFormKode}
-                                            placeholder="Contoh: LAB-KIM"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                    <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                                         <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                                             Fakultas <span className="text-red-500">*</span>
                                         </label>
+
                                         <SelectDropdown
                                             options={modalFakultasOptions}
                                             selected={formFakultas}
-                                            onSelect={(val) => {
-                                                setFormFakultas(val as any[]);
+                                            onSelect={(val: any) => {
+                                                const resolved =
+                                                    typeof val === "object" && val !== null
+                                                        ? Array.isArray(val)
+                                                            ? (val[0]?.value ?? val[0] ?? "")
+                                                            : (val?.value ?? "")
+                                                        : (val ?? "");
+                                                setFormFakultas(resolved);
                                                 if (formErrors.fakultas) {
                                                     setFormErrors((prev) => {
                                                         const next = { ...prev };
@@ -558,8 +550,10 @@ export default function ProfilLaboratoriumPage() {
                                                     });
                                                 }
                                             }}
+                                            onRemoveSelected={() => setFormFakultas("")}
                                             placeholder="Pilih Fakultas"
                                             indicator="check"
+                                            showPreviewValue={false}
                                         />
                                         {formErrors.fakultas && (
                                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
@@ -568,122 +562,91 @@ export default function ProfilLaboratoriumPage() {
                                             </p>
                                         )}
                                     </div>
-                                    <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Lokasi Gedung
-                                        </label>
-                                        <SelectDropdown
-                                            options={LOKASI_OPTIONS}
-                                            selected={formLokasi}
-                                            onSelect={(val) => setFormLokasi(val as any[])}
-                                            placeholder="Pilih Lokasi Gedung"
-                                            indicator="check"
-                                            showPreviewValue={false}
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Nomor Ruangan
-                                        </label>
-                                        <TextField
-                                            value={formRuangan}
-                                            onChange={setFormRuangan}
-                                            placeholder="Contoh: R.101"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Section 2: Penanggung Jawab & Kapasitas */}
-                            <div className="space-y-3 pt-2">
-                                <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                                    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-100 text-blue-700 font-bold text-[11px]">
-                                        2
-                                    </span>
-                                    <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                                        Pengelola & Kapasitas
-                                    </h4>
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     <div className="sm:col-span-2">
                                         <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Nama Laboran / PIC
-                                        </label>
-                                        <TextField
-                                            value={formLaboran}
-                                            onChange={setFormLaboran}
-                                            placeholder="Contoh: Nurrahmi Arny, A.Md. Farm"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Peran / Jabatan
+                                            Laboran / PIC <span className="text-red-500">*</span>
                                         </label>
                                         <SelectDropdown
-                                            options={[
-                                                { label: "Laboran", value: "Laboran" },
-                                                { label: "Dosen", value: "Dosen" },
-                                                { label: "Kepala Lab", value: "Kepala Lab" },
-                                            ]}
-                                            selected={formRoleLaboran}
-                                            onSelect={(val) => setFormRoleLaboran(val as any[])}
-                                            placeholder="Pilih Peran"
-                                            indicator="check"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Kapasitas Praktikan (Orang) <span className="text-red-500">*</span>
-                                        </label>
-                                        <TextField
-                                            value={formKapasitas}
-                                            onChange={(val) => {
-                                                setFormKapasitas(val);
-                                                if (formErrors.kapasitas) {
+                                            options={laboranOptions}
+                                            selected={formLaboran}
+                                            onSelect={(val: any) => {
+                                                const resolved =
+                                                    typeof val === "object" && val !== null
+                                                        ? Array.isArray(val)
+                                                            ? (val[0]?.value ?? val[0] ?? "")
+                                                            : (val?.value ?? "")
+                                                        : (val ?? "");
+                                                setFormLaboran(resolved);
+                                                if (formErrors.laboran) {
                                                     setFormErrors((prev) => {
                                                         const next = { ...prev };
-                                                        delete next.kapasitas;
+                                                        delete next.laboran;
                                                         return next;
                                                     });
                                                 }
                                             }}
-                                            placeholder="Contoh: 30"
+                                            onRemoveSelected={() => setFormLaboran("")}
+                                            placeholder="Pilih Laboran / PIC"
+                                            indicator="check"
+                                            showPreviewValue={false}
                                         />
-                                        {formErrors.kapasitas && (
+
+                                        {formErrors.laboran && (
                                             <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
                                                 <IconAlertCircle size={12} />
-                                                {formErrors.kapasitas}
+                                                {formErrors.laboran}
                                             </p>
                                         )}
                                     </div>
+                                    
                                     <div>
-                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-                                            Status Operasional
+                                          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                                            Lokasi Gedung <span className="text-red-500">*</span>
                                         </label>
                                         <SelectDropdown
-                                            options={[
-                                                { label: "Aktif", value: "Aktif" },
-                                                { label: "Pemeliharaan", value: "Pemeliharaan" },
-                                                { label: "Nonaktif", value: "Nonaktif" },
-                                            ]}
-                                            selected={formStatus}
-                                            onSelect={(val) => setFormStatus(val as any[])}
-                                            placeholder="Pilih Status"
+                                            options={LOKASI_OPTIONS}
+                                            selected={formLokasi}
+                                            onSelect={(val: any) => {
+                                                const resolved =
+                                                    typeof val === "object" && val !== null
+                                                        ? Array.isArray(val)
+                                                            ? (val[0]?.value ?? val[0] ?? "")
+                                                            : (val?.value ?? "")
+                                                        : (val ?? "");
+                                                setFormLokasi(resolved);
+                                                if (formErrors.lokasi) {
+                                                    setFormErrors((prev) => {
+                                                        const next = { ...prev };
+                                                        delete next.lokasi;
+                                                        return next;
+                                                    });
+                                                }
+                                            }}
+                                            onRemoveSelected={() => setFormLokasi("")}
+                                            placeholder="Pilih Lokasi Gedung"
                                             indicator="check"
+                                            showPreviewValue={false}
                                         />
+                                        {formErrors.lokasi && (
+                                            <p className="text-[11px] text-red-500 mt-1 flex items-center gap-1">
+                                                <IconAlertCircle size={12} />
+                                                {formErrors.lokasi}
+                                            </p>
+                                        )}
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Section 3: Deskripsi & Cover Foto */}
+                           
+
+                            {/* Section 2: Deskripsi & Cover Foto */}
                             <div className="space-y-3 pt-2">
                                 <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
                                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-100 text-blue-700 font-bold text-[11px]">
-                                        3
+                                        2
                                     </span>
                                     <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                                         Deskripsi & Foto Fasilitas
@@ -779,7 +742,7 @@ export default function ProfilLaboratoriumPage() {
                             </div>
 
                             {/* Modal Footer */}
-                            <div className="pt-4 border-t border-slate-100 flex items-center justify-end gap-3 sticky bottom-0 bg-white">
+                            <div className="pt-4 border-t border-slate-100 flex items-center justify-end gap-3 bottom-0 bg-white">
                                 <Button
                                     hierarchy="secondary"
                                     size="md"
@@ -795,7 +758,7 @@ export default function ProfilLaboratoriumPage() {
                                     className="flex items-center gap-1.5"
                                 >
                                     <IconCheck size={16} />
-                                    Simpan Laboratorium
+                                    Simpan
                                 </Button>
                             </div>
                         </form>

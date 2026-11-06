@@ -4,6 +4,7 @@ import {
     IconCheck,
     IconSettings,
     IconEdit,
+    IconTrash,
 } from "@tabler/icons-react";
 import { SelectFakultas } from "./profil-lab/select-fakultas-card";
 import { TextfieldLaboratorium } from "./profil-lab/textfield-laboratorium-card";
@@ -51,6 +52,7 @@ interface LabCardProps {
     onLaboranChange?: (authorName: string, authorRole: string) => void;
     onDeskripsiChange?: (value: string) => void;
     onMediaChange?: (file: File | null) => void;
+    onDelete?: () => void;
 }
 
 const DEFAULT_FAKULTAS: OptionFakultas[] = [
@@ -85,6 +87,7 @@ export default function LabCard({
     onLaboranChange,
     onDeskripsiChange,
     onMediaChange,
+    onDelete,
 }: LabCardProps) {
     const [isEditing, setIsEditing] = useState(false);
     const [selectedFakultas, setSelectedFakultas] = useState(fakultas);
@@ -320,22 +323,39 @@ export default function LabCard({
                             )}
                         </div>
 
-                        <button
-                            type="button"
-                            onClick={handleToggleEdit}
-                            className={`p-1.5 rounded-lg transition-colors shrink-0 ${
-                                isEditing
-                                    ? "bg-gray-200 text-gray-900"
-                                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                            }`}
-                            aria-label="Pengaturan Badge"
-                        >
-                            {isEditing ? (
-                                <IconCheck size={20} />
-                            ) : (
-                                <IconSettings size={20} />
+                        <div className="flex items-center gap-1.5 shrink-0">
+                            {isEditing && onDelete && (
+                                <button
+                                    type="button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onDelete();
+                                    }}
+                                    className="p-1.5 rounded-lg text-red-500 hover:text-red-700 hover:bg-red-50 transition-colors"
+                                    title="Hapus Profil Laboratorium"
+                                    aria-label="Hapus Profil Laboratorium"
+                                >
+                                    <IconTrash size={20} />
+                                </button>
                             )}
-                        </button>
+
+                            <button
+                                type="button"
+                                onClick={handleToggleEdit}
+                                className={`p-1.5 rounded-lg transition-colors shrink-0 ${
+                                    isEditing
+                                        ? "bg-gray-200 text-gray-900"
+                                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                                }`}
+                                aria-label="Pengaturan Badge"
+                            >
+                                {isEditing ? (
+                                    <IconCheck size={20} />
+                                ) : (
+                                    <IconSettings size={20} />
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

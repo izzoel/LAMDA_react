@@ -290,7 +290,7 @@ export const DEFAULT_LABORAN_OPTIONS: OptionLaboran[] = [
  */
 export async function fetchLaboranUserOptions(): Promise<OptionLaboran[]> {
     try {
-        const response = await fetch("/api/v1/users?limit=5&all=true", {
+        const response = await fetch("/api/v1/users?all=true", {
             headers: {
                 Accept: "application/json",
             },
@@ -322,19 +322,20 @@ export async function fetchLaboranUserOptions(): Promise<OptionLaboran[]> {
             }
         });
 
-        // Lengkapi dengan opsi default laboran jika belum mencapai 5 user
-        DEFAULT_LABORAN_OPTIONS.forEach((item) => {
-            const key = item.value.toLowerCase().trim();
-            if (!optionsMap.has(key)) {
-                optionsMap.set(key, item);
-            }
-        });
+        // Lengkapi dengan opsi default laboran jika database belum ada user
+        if (optionsMap.size === 0) {
+            DEFAULT_LABORAN_OPTIONS.forEach((item) => {
+                const key = item.value.toLowerCase().trim();
+                if (!optionsMap.has(key)) {
+                    optionsMap.set(key, item);
+                }
+            });
+        }
 
-        // Pastikan hanya 5 user saja yang dikembalikan
-        return Array.from(optionsMap.values()).slice(0, 5);
+        return Array.from(optionsMap.values());
     } catch (error) {
         console.warn("Gagal memuat user dari API, menggunakan opsi laboran default:", error);
-        return DEFAULT_LABORAN_OPTIONS.slice(0, 5);
+        return DEFAULT_LABORAN_OPTIONS;
     }
 }
 
